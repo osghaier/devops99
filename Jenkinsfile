@@ -26,10 +26,10 @@ pipeline {
 				sh "mvn package -DskipTests=true "
 			}
 		} 
-stage('SonarQube Analysis') {
-    def mvn = tool 'Default Maven';
+	
+	stage("SonarQube Analysis") {
     withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=test -Dsonar.projectName='test'"
+      sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test -Dsonar.projectName='test'"
     }
   }
     
