@@ -7,11 +7,11 @@ pipeline {
         // This can be http or https
         NEXUS_PROTOCOL = "http"
         // Where your Nexus is running
-        NEXUS_URL = "192.168.222.135:8081/Nexus"
+        NEXUS_URL = "192.168.222.135:8081"
         // Repository where we will upload the artifact
         NEXUS_REPOSITORY = "Releases"
         // Jenkins credential id to authenticate to Nexus OSS
-        NEXUS_CREDENTIAL_ID = "admin:admin123"
+        NEXUS_CREDENTIAL_ID = "admin:f115e759-f316-475d-8339-fdf96882b251"
     }
     
      stages {
