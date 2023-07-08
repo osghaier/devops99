@@ -38,23 +38,16 @@ pipeline {
 			}
 		} 
 	
-	stage("SonarQube Analysis") {
-	steps {
-      sh "mvn sonar:sonar -Dsonar.projectKey=test -Dsonar.projectName='test'"
-	}
-  }
-
-
-	     
+	
 
 
 stage("Deploiement dans nexus ") {
      		 steps{
-                          }
+                        
   			sh "mvn deploy"
                 }
 
-
+}
 
 stage("Deployment stage") {
             steps {
