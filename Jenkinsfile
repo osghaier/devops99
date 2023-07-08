@@ -56,7 +56,7 @@ stage("Deploiement dans nexus ") {
 
 
 
-stastage("Deployment stage") {
+stage("Deployment stage") {
             steps {
                 script {
                  pom = readMavenPom file: "pom.xml";
