@@ -56,13 +56,15 @@ stage("Deployment stage") {
 
 
 
-	stage("Deploiement dans nexus ") {
-     		 steps{
-              // If you are using Windows then you should use "bat" step
-              // Since unit testing is out of the scope we skip them
-      	sh "mvn deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet-ci -Dversion=5.1 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.222.135:8081/repository/maven-releases/ -Dfile=target/timesheet-ci-5.1.jar"
+	stage("Deployment stage") {
+            steps {
+                script {
+                pom = readMavenPom file: 'pom.xml'
+                   echo "${pom.artifactId}-${pom.version}.${pom.packaging}"
+                   sh "mvn deploy:deploy-file  -DskipTests=true -DgroupId=${pom.groupId} -DartifactId=${pom.artifactId} -Dversion=${pom.version}  -DgeneratePom=true -Dpackaging=${pom.packaging}  -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/${pom.artifactId}-${pom.version}.${pom.packaging}"
                 }
             }
+        }
     
 }
 }
